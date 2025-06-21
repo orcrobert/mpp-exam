@@ -7,17 +7,18 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install project dependencies
-RUN npm install --production
+# Install all dependencies (including dev dependencies like prisma and typescript)
+RUN npm install
 
-# Copy the rest of the application's source code from your project to the working directory
+# Copy the rest of the application source code
 COPY . .
 
-# Build TypeScript code
+# Build the TypeScript code
 RUN npm run build
 
-# Make port 8000 available to the world outside this container
-EXPOSE 8000
+# This command will be run by Render to start the service.
+# It first runs the database migrations and then starts the production server.
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
 
-# Define the command to run your app
-CMD [ "npm", "start" ] 
+# Make port 8000 available to the world outside this container
+EXPOSE 8000 

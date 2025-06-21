@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { prisma } from '../services/prisma';
 import { comparePassword, generateToken, hashPassword } from '../services/authService';
-import { catchAsync } from '../utils/errors';
+import { AppError, catchAsync } from '../utils/errors';
 
 const router = Router();
 
@@ -10,17 +10,17 @@ router.post('/register', catchAsync(async (req: Request, res: Response) => {
   const { cnp, password } = req.body;
 
   if (!cnp || !password) {
-    return res.status(400).json({ success: false, message: 'CNP and password are required' });
+    throw new AppError('CNP and password are required', 400);
   }
 
   // Basic CNP validation (must be 13 digits)
   if (!/^\d{13}$/.test(cnp)) {
-    return res.status(400).json({ success: false, message: 'Invalid CNP format. Must be 13 digits.' });
+    throw new AppError('Invalid CNP format. Must be 13 digits.', 400);
   }
 
   const existingUser = await prisma.user.findUnique({ where: { cnp } });
   if (existingUser) {
-    return res.status(409).json({ success: false, message: 'User with this CNP already exists' });
+    throw new AppError('User with this CNP already exists', 409);
   }
 
   const hashedPassword = await hashPassword(password);
@@ -40,17 +40,17 @@ router.post('/login', catchAsync(async (req: Request, res: Response) => {
   const { cnp, password } = req.body;
 
   if (!cnp || !password) {
-    return res.status(400).json({ success: false, message: 'CNP and password are required' });
+    throw new AppError('CNP and password are required', 400);
   }
 
   const user = await prisma.user.findUnique({ where: { cnp } });
   if (!user) {
-    return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    throw new AppError('Invalid credentials', 401);
   }
 
   const isPasswordValid = await comparePassword(password, user.password);
   if (!isPasswordValid) {
-    return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    throw new AppError('Invalid credentials', 401);
   }
 
   const token = generateToken(user);

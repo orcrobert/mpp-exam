@@ -7,7 +7,7 @@ import { Prisma } from '@prisma/client';
 const router = Router();
 
 // POST /api/votes
-router.post('/', authMiddleware, catchAsync<AuthRequest>(async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+router.post('/', authMiddleware, catchAsync(async (req: AuthRequest, res: Response) => {
   const { candidateId } = req.body;
   const userId = req.user?.id;
 
@@ -51,7 +51,7 @@ router.post('/', authMiddleware, catchAsync<AuthRequest>(async (req: AuthRequest
     return newVote;
   });
 
-  void res.status(201).json({ success: true, data: vote });
+  res.status(201).json({ success: true, data: vote });
 }));
 
 export default router;

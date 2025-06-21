@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2",
+    "name": "Michael Chen aa",
+    "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    "party": "Unity Party",
+    "description": "Small business owner and community organizer. Focuses on infrastructure improvement, education reform, and supporting local businesses.",
+    "createdAt": "2025-06-21T08:37:34.718Z",
+    "updatedAt": "2025-06-21T08:42:43.577Z"
+  },
+  {
+    "name": "Alexander Garcia",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    "party": "Conservative Union",
+    "description": "Public health official with deep roots in the community. Focuses on youth programs, education reform, public safety, environmental protection. Committed to serving the community and bringing positive change through collaborative leadership and evidence-based policy making.",
+    "id": "4d0e62c3-bc6d-4d8c-8339-ea408c7d77d4",
+    "createdAt": "2025-06-21T08:40:57.652Z",
+    "updatedAt": "2025-06-21T08:40:57.652Z"
+  },
+  {
+    "name": "aaa",
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhEQEBAVEhUQFRAVEA8PDw8PEBAPFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0fHx0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKgBLAMBEQACEQEDEQH/xAAaAAACAwEBAAAAAAAAAAAAAAADBAECBQYA/8QANRAAAgECBQMCBQIFBAMAAAAAAQIAAxEEEiExQQVRcWGBBhMiMpFCoRRSYrHRI3LB8BWS4f/EABoBAAIDAQEAAAAAAAAAAAAAAAECAAMEBQb/xAAuEQACAgIDAAEDAwMDBQAAAAAAAQIRAyEEEjFBBRNRIjJhI5HwFHGxFUKhwdH/2gAMAwEAAhEDEQA/AE0adNM9IM0zGEYwplGQQqwnOyFkWQTKGNQMvAyUSYjEYIiI2ANSEqkxZDSiVFbLqIyAy0tiAoRGQ6LBY6CCqyxDxQq6x0y5FBSlqGs9kjINhqKyyIkiakdkij1JJEFl6yi0YEfTKrDWQ1R8C0WtCmJJWEarGsTqK1qkWy2MTPeobxS9JUPYJ4yKciNvDAnYR0YcmjVw2HksxzkNhbSFQvXfiMMhas9pLGUbFsTUuIOxbCFMElUgWtIpDuCbL/xZA2k7C/aTCrjrWh7IR4LDPj/WDRUuOctSaOjqsaRo6ZW0Mo0SfglFzOdmQ0SrCZWxgJWCwkxWKRK2APSEqkVy8GVErK2EtGQCryyIyKAyweghjJAoBVEsRbEHaMhwq0xLULYCsIw8StMy2I1FmEYiJWQlA61SGwxiJOOYtlyK5o1hoA9SEKSPSEKCjc7SE7Uja6X0vYmMkY82c6LD4UCOc+c2w9wICsqzQimdiXO8LZoxxQKnc6mLY8qQM6m3aD5JeiQJBbBmoLWksZJgKiDYSMsTZc0BI",
+    "party": "asdfasdfasdf",
+    "description": "asdf",
+    "id": "6e38e73b-e4f2-4c62-906e-8175422b7a88",
+    "createdAt": "2025-06-21T08:41:32.517Z",
+    "updatedAt": "2025-06-21T08:41:32.517Z"
+  },
+  {
+    "name": "Joshua Miller adf",
+    "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    "party": "Liberty Movement",
+    "description": "Consultant with experience in grassroots organizing. Focuses on economic development, community engagement, renewable energy. Committed to serving the community and bringing positive change through collaborative leadership and evidence-based policy making.",
+    "id": "d1d2c06c-6390-4ed5-9796-f0bafb36f8d7",
+    "createdAt": "2025-06-21T08:43:33.231Z",
+    "updatedAt": "2025-06-21T08:43:39.676Z"
+  }
+]

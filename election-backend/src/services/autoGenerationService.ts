@@ -81,8 +81,12 @@ export class AutoGenerationService {
     // Start generation interval (every 5 seconds)
     const interval = setInterval(async () => {
       try {
-        const candidateData = generateRandomCandidate();
-        const newCandidate = await CandidateModel.create(candidateData);
+        const randomData = generateRandomCandidate();
+        const newCandidate = await CandidateModel.create({
+          name: randomData.name,
+          description: randomData.description,
+          imageUrl: randomData.image,
+        });
         
         // Increment count
         const currentCount = this.generationCounts.get(clientId) || 0;

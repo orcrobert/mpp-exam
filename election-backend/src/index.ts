@@ -1,13 +1,15 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { createServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 
-import { CandidateModel } from './models/candidateModel';
 import { AutoGenerationService } from './services/autoGenerationService';
 import candidatesRouter from './routes/candidates';
+import authRouter from './routes/auth';
+import votesRouter from './routes/votes';
+import { AppError } from './utils/errors';
 
 const app = express();
 const server = createServer(app);
@@ -34,6 +36,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/candidates', candidatesRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/votes', votesRouter);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -53,7 +57,14 @@ app.get('/api', (req, res) => {
     version: '1.0.0',
     endpoints: {
       candidates: '/api/candidates',
-      health: '/api/health'
+      health: '/api/health',
+      auth: [
+        'POST /api/auth/register',
+        'POST /api/auth/login'
+      ],
+      votes: [
+        'POST /api/votes (requires auth)'
+      ]
     },
     websocket: {
       events: [
@@ -76,21 +87,18 @@ app.use((req, res) => {
   });
 });
 
-app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error('API Error:', error);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error('API Error:', err);
   res.status(500).json({
     success: false,
-    message: 'Internal server error',
-    ...(process.env.NODE_ENV === 'development' && { error: error.message })
+    message: err.message || 'Internal server error',
   });
 });
 
 // Initialize services
 async function startServer() {
   try {
-    // Initialize database/file system
-    await CandidateModel.initialize();
-    console.log('✅ Data storage initialized');
+    console.log('✅ Prisma client initialized');
 
     // Initialize auto-generation service
     const autoGenService = new AutoGenerationService(io);

@@ -1,7 +1,7 @@
 import { io, Socket } from 'socket.io-client';
 import { Candidate } from '@/types/candidate';
 
-const WEBSOCKET_URL = process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'http://localhost:8000';
+const WEBSOCKET_URL = process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'https://mpp-exam-y31v.onrender.com';
 
 export interface GenerationStatusData {
   isGenerating: boolean;
